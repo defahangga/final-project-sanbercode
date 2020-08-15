@@ -3,16 +3,18 @@
 @section('content')
 
 <div class="ml-4 mr-4">
+<form action="/pertanyaan/create" class="mb-4">
+        <button type="submit" class="btn btn-success mt-2">Buat pertanyaan</button>
+        </form>
 
     @foreach($question as $key => $post)
 
     <div class="media">
             <div class="media-body">
                 <h5 class="mt-0" style="font-weight: bold;">{{ $post->judul }}</h5>
-                <p>Author  &nbsp;:&nbsp;  </p>
                 {{ $post->isi }}
                 <br><br><h6>Tags : </h6>
-                <a href="#" class="btn btn-outline-secondary btn-sm">Secondary</a><br>
+                {{$post->tags}} <br>
 
                 <div class="mt-2" style="display: flex;">
                     <a href="" class="btn btn-light btn-sm">Upvote</a>

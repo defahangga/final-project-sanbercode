@@ -25,26 +25,11 @@ class PertanyaanController extends Controller
 
     // menyimpan pertanyaan ke database
     public function store(Request $request){
-        
-        $tags_arr=explode(',', $request["tags"]);
-        
-        // $tag_ids=[];
-        // foreach($tags_arr as $tag_name){
-        //     // $tag = tag::where("tag_name", $tag_name)->first();
-        //     // if($tag){
-        //     //     $tag_ids[]=$tag->id;
-        //     // }else{
-        //     //     $new_tag=tag::create(["tag_name" => $tag_name]);
-        //     //     $tag_ids[] = $new_tag->id;
-        //     // }
-
-        //     $tag = tag::firstOrCreate(["tag_name" => $tag_name]);
-        //     $tag_ids[] = $tag -> id;
-        // }
 
         $pertanyaan = question::create([
             "judul" => $request["judul"],
             "isi" => $request["isi"],
+            "tags" => $request["tags"],
             "user_id" => Auth::id()
         ]);
 
@@ -57,6 +42,7 @@ class PertanyaanController extends Controller
     public function index(){
         $question = question::all();
         $jawaban = answer::all();
+
 
         return view('index', compact('question','jawaban'));
     }
@@ -71,7 +57,8 @@ class PertanyaanController extends Controller
     public function update($pertanyaan_id, Request $request){
         $update = question::where('id', $pertanyaan_id)->update([
             'judul' => $request['judul'],
-            'isi' => $request['isi']
+            'isi' => $request['isi'],
+            'tags' => $request['tag']
         ]);
 
         return redirect('/pertanyaan');

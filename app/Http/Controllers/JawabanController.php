@@ -23,5 +23,6 @@ class JawabanController extends Controller
         $jawaban = answer::all();
     
         return view ('index', compact('jawaban','question'));
+        
     }
 }

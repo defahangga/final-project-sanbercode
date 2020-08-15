@@ -30,7 +30,7 @@
                   </div>
                   <div class="form-group">
                     <label for="tag">Tags</label>
-                    <input type="text" class="form-control" name="tag" id="tag" value="{{old('tag', $edit_question->tag)}}" placeholder="Pisahkan tag dengan koma(,)">
+                    <input type="text" class="form-control" name="tag" id="tag" value="{{old('tag', $edit_question->tags)}}" placeholder="Pisahkan tag dengan koma(,)">
                     <!-- @error('isi')
                       <div class="alert alert-danger">{{ $message }}</div>
                     @enderror -->
